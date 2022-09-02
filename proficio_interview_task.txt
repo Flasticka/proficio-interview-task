@@ -1,0 +1,4 @@
+Ola. V zložke data sa nachádza dataset obsahujúci info o rôznych podnikoch v Amsterdame (ako ich meno, popis, url na obrázok či polohu). Tvojou úlohou je vytvoriť mini frontend aplikáciu, ktorá bude obsahovať mapu zobrazujúcu body s týmito zariadeniami (po nakliknutí bodu sa zobrazí info o danom podniku) a lištu s možnosťou filtrovania podnikov na základe názvu a obsahu popisu.
+
+Podmienkou je využitie frameworku Vue (2 či 3), inak máš voľné ruky.
+V prípade dotazov mi napíš buď na martina.grzybowska@proficio.cz alebo na DM na Discord na ZemiačikSK#8634.
