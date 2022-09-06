@@ -1,17 +1,11 @@
 <script lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import data from "../../data/establishment-data.json";
+import { RouterView } from "vue-router";
 export default {
   name: "App",
-  components: {RouterView},
-  data() {
-    const datao = data;
-    return datao;
-  },
-  
-}
+  components: { RouterView },
+};
 </script>
 
 <template>
-  <RouterView :data="datao" />
+  <RouterView />
 </template>
