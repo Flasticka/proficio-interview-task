@@ -1,11 +1,21 @@
 <template>
   <div class="nav-bar-container">
-    <h1 class="nav-bar-container__header">Spots in Amsterdam</h1>
+    <div class="nav-bar__upper-part">
+      <div class="header-container">
+        <h1 class="nav-bar-container__header">{{ language.value.header }}</h1>
+      </div>
+
+      <LanguageSelector
+        id="last-item"
+        @selectedLanguage="handleSelectedLanguage"
+      />
+    </div>
+
     <button
       v-if="Object.keys(route.query).length === 0 && !filterDisplay"
       @click="handleCreateFilter"
     >
-      + Add Filter
+      {{ language.value.addFilter }}
     </button>
     <form
       @submit.prevent="handleSubmit"
@@ -13,24 +23,28 @@
       class="nav-bar-container__form"
     >
       <div>
-        <label>Name</label>
+        <label>{{ language.value.nameFilter }}</label>
         <input type="text" v-model="nameFilter" />
       </div>
       <div>
-        <label>Description</label>
+        <label>{{ language.value.descriptionFilter }}</label>
         <input type="text" v-model="descriptionFilter" />
       </div>
 
       <button :disabled="!nameFilter && !descriptionFilter">
-        + Add Filter
+        {{ language.value.addFilter }}
       </button>
     </form>
     <div class="active-filter" v-if="Object.keys(route.query).length !== 0">
-      <div v-if="route.query.name">Name: {{ route.query.name }}</div>
-      <div v-if="route.query.description">
-        Description: {{ route.query.description }}
+      <div v-if="route.query.name">
+        {{ language.value.nameFilter }}: {{ route.query.name }}
       </div>
-      <button @click="handleRemoveFilter">Remove filter</button>
+      <div v-if="route.query.description">
+        {{ language.value.descriptionFilter }}: {{ route.query.description }}
+      </div>
+      <button @click="handleRemoveFilter">
+        {{ language.value.removeFilter }}
+      </button>
     </div>
   </div>
 </template>
@@ -38,9 +52,12 @@
 <script>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import LanguageSelector from "./LanguageSelector.vue";
 export default {
   inheritAttrs: true,
   name: "NavBar",
+  props: ["language"],
+  components: { LanguageSelector },
   setup() {
     const route = useRoute();
     const nameFilter = ref("");
@@ -70,13 +87,16 @@ export default {
       this.descriptionFilter = "";
       this.$emit("remove");
     },
+    handleSelectedLanguage(selectedLanguage) {
+      this.$emit("selectedLanguage", selectedLanguage);
+    },
   },
 };
 </script>
 
 <style scoped>
 .nav-bar-container {
-  height: 8rem;
+  height: 9rem;
   width: 100%;
   background-color: black;
   margin-bottom: 4rem;
@@ -101,6 +121,24 @@ export default {
   align-items: center;
 }
 
+.nav-bar__upper-part {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-left: 20%;
+}
+.header-container {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+}
+#last-item {
+  width: 15%;
+  justify-content: flex-start;
+  margin-right: 8rem;
+}
 button:disabled,
 button:disabled:hover {
   background-color: grey;

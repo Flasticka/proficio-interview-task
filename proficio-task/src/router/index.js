@@ -16,7 +16,7 @@ const router = createRouter({
       name: "spot",
       component: SpotPage,
       props: true,
-    }
+    },
   ],
 });
 

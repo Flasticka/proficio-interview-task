@@ -1,3 +1,11 @@
+<template>
+  <RouterView
+    v-if="currentLanguageData !== null && currentLanguageData.value !== null"
+    :language="currentLanguageData"
+    @selectedLanguage="handleSelectedLanguage"
+  />
+</template>
+
 <script lang="ts">
 import { RouterView } from "vue-router";
 import { ref, watch } from "vue";
@@ -6,24 +14,30 @@ export default {
   name: "App",
   components: { RouterView },
   setup() {
-    const currentLanguage = ref("en");
-    const { language, error, loadData } = getLanguage(currentLanguage.value);
-    loadData();
-    if (error.value) {
-      console.log(error.value);
-      return { error };
-    }
-    return { language };
+    const currentLanguage = ref("es");
+    const currentLanguageData = ref(null);
+    watch(currentLanguage, () => {
+      console.log(currentLanguage.value);
+      const { language, error, loadData } = getLanguage(currentLanguage.value);
+      loadData();
+      if (error.value) {
+        console.log(error.value);
+        return { error };
+      }
+      currentLanguageData.value = language;
+    });
+    currentLanguage.value = "en";
+    console.log(currentLanguage.value);
+    return { currentLanguageData, currentLanguage };
+  },
+  methods: {
+    handleSelectedLanguage(selectedLanguage) {
+      this.currentLanguage = selectedLanguage;
+      console.log(this.currentLanguage);
+    },
   },
 };
 </script>
-
-<template>
-  <RouterView
-    v-if="language !== null && language.value !== null"
-    :language="language"
-  />
-</template>
 
 <style>
 #app {
