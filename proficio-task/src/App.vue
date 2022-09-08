@@ -17,7 +17,6 @@ export default {
     const currentLanguage = ref("es");
     const currentLanguageData = ref(null);
     watch(currentLanguage, () => {
-      console.log(currentLanguage.value);
       const { language, error, loadData } = getLanguage(currentLanguage.value);
       loadData();
       if (error.value) {
@@ -27,13 +26,11 @@ export default {
       currentLanguageData.value = language;
     });
     currentLanguage.value = "en";
-    console.log(currentLanguage.value);
     return { currentLanguageData, currentLanguage };
   },
   methods: {
     handleSelectedLanguage(selectedLanguage) {
       this.currentLanguage = selectedLanguage;
-      console.log(this.currentLanguage);
     },
   },
 };

@@ -14,7 +14,9 @@
     </p>
     <hr />
     <p>{{ spotData.details[language.value.trcid].shortdescription }}</p>
-    <span class="see-more" @click="handleClick(spotData.trcid)">See more</span>
+    <button class="see-more custom-button" @click="handleClick(spotData.trcid)">
+      {{ language.value.seeMore }}
+    </button>
   </div>
 </template>
 
@@ -25,6 +27,7 @@ export default {
   name: "SpotPreview",
   props: ["spotData", "language"],
   setup(props) {
+    console.log(props.spotData)
     const imageToShow = computed(() => {
       return props.spotData.media.length !== 0
         ? props.spotData.media.filter((img) => img.main === "true")[0]
@@ -51,13 +54,8 @@ export default {
   padding: 1rem;
   width: 100%;
 }
-.see-more:hover {
-  color: blue;
-}
 .see-more {
-  cursor: pointer;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .spot-preview-container {
   display: flex;

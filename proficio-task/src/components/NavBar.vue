@@ -1,17 +1,11 @@
 <template>
   <div class="nav-bar-container">
-    <div class="nav-bar__upper-part">
-      <div class="header-container">
-        <h1 class="nav-bar-container__header">{{ language.value.header }}</h1>
-      </div>
+    <NavBarLanguageHeader
+      :header="language.value.header"
+      @selectedLanguage="handleSelectedLanguage"
+    />
 
-      <LanguageSelector
-        id="last-item"
-        @selectedLanguage="handleSelectedLanguage"
-      />
-    </div>
-
-    <button
+    <button class="custom-button"
       v-if="Object.keys(route.query).length === 0 && !filterDisplay"
       @click="handleCreateFilter"
     >
@@ -31,18 +25,20 @@
         <input type="text" v-model="descriptionFilter" />
       </div>
 
-      <button :disabled="!nameFilter && !descriptionFilter">
+      <button class="custom-button" :disabled="!nameFilter && !descriptionFilter">
         {{ language.value.addFilter }}
       </button>
     </form>
     <div class="active-filter" v-if="Object.keys(route.query).length !== 0">
       <div v-if="route.query.name">
-        {{ language.value.nameFilter }}: {{ route.query.name }}
+        <span>{{ language.value.nameFilter }}</span>
+        <span class="last-span">{{ route.query.name }}</span>
       </div>
       <div v-if="route.query.description">
-        {{ language.value.descriptionFilter }}: {{ route.query.description }}
+        <span>{{ language.value.descriptionFilter }}</span>
+        <span class="last-span">{{ route.query.description }}</span>
       </div>
-      <button @click="handleRemoveFilter">
+      <button class="custom-button" @click="handleRemoveFilter">
         {{ language.value.removeFilter }}
       </button>
     </div>
@@ -52,12 +48,12 @@
 <script>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import LanguageSelector from "./LanguageSelector.vue";
+import NavBarLanguageHeader from "./NavBarLanguageHeader.vue";
 export default {
   inheritAttrs: true,
   name: "NavBar",
   props: ["language"],
-  components: { LanguageSelector },
+  components: { NavBarLanguageHeader },
   setup() {
     const route = useRoute();
     const nameFilter = ref("");
@@ -94,7 +90,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .nav-bar-container {
   height: 9rem;
   width: 100%;
@@ -104,13 +100,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.nav-bar-container__header {
-  color: white;
-  font-weight: bold;
-  font-size: 4rem;
-  margin: 0;
-  padding: 0;
-}
+
 .nav-bar-container__form {
   width: 50%;
   color: white;
@@ -121,35 +111,18 @@ export default {
   align-items: center;
 }
 
-.nav-bar__upper-part {
-  margin-top: 1rem;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding-left: 20%;
-}
-.header-container {
-  width: 85%;
-  display: flex;
-  justify-content: center;
-}
-#last-item {
-  width: 15%;
-  justify-content: flex-start;
-  margin-right: 8rem;
-}
-button:disabled,
-button:disabled:hover {
+.custom-button:disabled,
+.custom-button:disabled:hover {
   background-color: grey;
   color: white;
   cursor: default;
 }
-button:hover {
+.custom-button:hover {
   color: black;
   background-color: white;
+  border: 2px solid black;
 }
-button {
+.custom-button {
   font-weight: bold;
   color: white;
   background-color: black;
@@ -176,5 +149,9 @@ input {
 }
 label {
   font-size: 1.1rem;
+}
+.last-span {
+  margin-left: 1rem;
+  color: grey;
 }
 </style>

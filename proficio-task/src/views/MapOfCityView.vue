@@ -48,7 +48,6 @@ export default {
     const center = { lat: 52.379189, lng: 4.899431 };
     const { spots, error, loadData } = getSpots();
     loadData();
-    console.log(spots);
 
     if (error.value) {
       console.log(error.value);
@@ -91,14 +90,6 @@ export default {
     handleSelectedLanguage(selectedLanguage) {
       this.$emit("selectedLanguage", selectedLanguage);
     },
-    //handleHover(marker) {
-    //const infoWindow = InfoWindow();
-    //console.log(this.$refs["info"].infoWindow, this.$refs["map"].map, marker);
-    //this.$refs["info"].infoWindow.open(
-    //this.$refs["map"].map,
-    //this.$refs[marker].marker
-    //);
-    //},
   },
 };
 </script>
