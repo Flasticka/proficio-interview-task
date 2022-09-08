@@ -5,7 +5,8 @@
       @selectedLanguage="handleSelectedLanguage"
     />
 
-    <button class="custom-button"
+    <button
+      class="custom-button"
       v-if="Object.keys(route.query).length === 0 && !filterDisplay"
       @click="handleCreateFilter"
     >
@@ -25,7 +26,10 @@
         <input type="text" v-model="descriptionFilter" />
       </div>
 
-      <button class="custom-button" :disabled="!nameFilter && !descriptionFilter">
+      <button
+        class="custom-button"
+        :disabled="!nameFilter && !descriptionFilter"
+      >
         {{ language.value.addFilter }}
       </button>
     </form>

@@ -27,7 +27,6 @@ export default {
   name: "SpotPreview",
   props: ["spotData", "language"],
   setup(props) {
-    console.log(props.spotData)
     const imageToShow = computed(() => {
       return props.spotData.media.length !== 0
         ? props.spotData.media.filter((img) => img.main === "true")[0]

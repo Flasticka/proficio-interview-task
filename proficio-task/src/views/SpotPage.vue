@@ -100,8 +100,7 @@ export default {
 
 .carousel__prev--in-active,
 .carousel__next--in-active {
-  background-color: grey;
-  cursor: default;
+  display: none;
 }
 .carousel__prev:not(.carousel__prev--in-active):hover,
 .carousel__next:not(.carousel__next--in-active):hover {

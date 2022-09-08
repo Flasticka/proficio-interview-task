@@ -21,7 +21,7 @@ export default {
     handleSelectedLanguage(selectedLanguage) {
       this.$emit("selectedLanguage", selectedLanguage);
     },
-  }
+  },
 };
 </script>
 
