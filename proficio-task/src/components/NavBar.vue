@@ -96,7 +96,7 @@ export default {
 
 <style>
 .nav-bar-container {
-  height: 9rem;
+  padding-bottom: 1rem;
   width: 100%;
   background-color: black;
   margin-bottom: 4rem;

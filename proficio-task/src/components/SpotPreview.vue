@@ -8,10 +8,10 @@
     </div>
     <h3>{{ spotData.details[language.value.trcid].calendarsummary }}</h3>
     <hr />
-    <p>
-      {{ spotData.location.adress }} {{ spotData.location.city }}
-      {{ spotData.location.zipcode }}
-    </p>
+    <div class="spot-preview-container__adress">
+      <span>{{ spotData.location.adress }}</span>
+      <span class="last-item">{{ spotData.location.city }} {{ spotData.location.zipcode }}</span>
+    </div>
     <hr />
     <p>{{ spotData.details[language.value.trcid].shortdescription }}</p>
     <button class="see-more custom-button" @click="handleClick(spotData.trcid)">
@@ -69,5 +69,14 @@ img {
   margin-top: 1rem;
   width: 400px;
   height: 200px;
+}
+.spot-preview-container__adress {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  font-weight: bold;
+}
+.spot-preview-container__adress .last-item {
+  margin-top: 0.5rem;
 }
 </style>
