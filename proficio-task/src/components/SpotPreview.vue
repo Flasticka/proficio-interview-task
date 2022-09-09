@@ -10,7 +10,9 @@
     <hr />
     <div class="spot-preview-container__adress">
       <span>{{ spotData.location.adress }}</span>
-      <span class="last-item">{{ spotData.location.city }} {{ spotData.location.zipcode }}</span>
+      <span class="last-item"
+        >{{ spotData.location.city }} {{ spotData.location.zipcode }}</span
+      >
     </div>
     <hr />
     <p>{{ spotData.details[language.value.trcid].shortdescription }}</p>
