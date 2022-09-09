@@ -1,10 +1,10 @@
 # proficio-interview-task
 
-This is a project for a job interview in [Proficio](https://proficio.cz/)
+This is a project for a job interview in [Proficio](https://proficio.cz/).
 
 ## Run project (dev mode)
 
-Despite the fact, that this project is supposed to be a simple frontened app, I am simulate fetching data from server.
+Despite the fact, that this project is supposed to be a simple frontened app, I simulate fetching data from server.
 To do it, I used [Json server](https://www.npmjs.com/package/json-server). App fetch data from `localhost` on port `3000`.
 
 ### Run Json Server
