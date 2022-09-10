@@ -18,3 +18,7 @@ To run App in dev, we change working directory to `proficio-task` and then simpl
 ## Build Project
 
 How to build project and other options and scripts, you can find in [README](./proficio-task/) `proficio-task` folder.
+
+## Run Tests
+
+You can run some simple tests of some components by chhanging working directory to `proficio-task` and running script `npm run test:unit`
