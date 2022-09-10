@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar__header-language">
     <div class="header-container">
-      <h1 class="nav-bar-container__header">{{ header }}</h1>
+      <h1 data-test="nav-bar-container__header-test" class="nav-bar-container__header">{{ header }}</h1>
     </div>
 
     <LanguageSelector

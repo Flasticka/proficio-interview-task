@@ -6,6 +6,7 @@
     />
 
     <button
+    data-test="addfilter-button--no-form"
       class="custom-button"
       v-if="Object.keys(route.query).length === 0 && !filterDisplay"
       @click="handleCreateFilter"
@@ -13,6 +14,7 @@
       {{ language.value.addFilter }}
     </button>
     <form
+      data-test="addfilter-button--with-form"
       @submit.prevent="handleSubmit"
       v-if="filterDisplay"
       class="nav-bar-container__form"
@@ -33,16 +35,16 @@
         {{ language.value.addFilter }}
       </button>
     </form>
-    <div class="active-filter" v-if="Object.keys(route.query).length !== 0">
+    <div data-test="active-filter" class="active-filter" v-if="Object.keys(route.query).length !== 0">
       <div v-if="route.query.name">
         <span>{{ language.value.nameFilter }}</span>
-        <span class="last-span">{{ route.query.name }}</span>
+        <span data-test="active-filter__name" class="last-span">{{ route.query.name }}</span>
       </div>
-      <div v-if="route.query.description">
+      <div data-test="active-filter__description" v-if="route.query.description">
         <span>{{ language.value.descriptionFilter }}</span>
         <span class="last-span">{{ route.query.description }}</span>
       </div>
-      <button class="custom-button" @click="handleRemoveFilter">
+      <button data-test="active-filter__button" class="custom-button" @click="handleRemoveFilter">
         {{ language.value.removeFilter }}
       </button>
     </div>

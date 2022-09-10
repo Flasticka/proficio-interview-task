@@ -1,22 +1,22 @@
 <template>
   <div class="spot-preview-container">
     <div class="spot-preview-container__header">
-      <h1>{{ spotData.details[language.value.trcid].title }}</h1>
+      <h1 data-test="spot-preview__title">{{ spotData.details[language.value.trcid].title }}</h1>
     </div>
     <div v-if="imageToShow">
       <img :src="imageToShow.url" alt="image" />
     </div>
-    <h3>{{ spotData.details[language.value.trcid].calendarsummary }}</h3>
+    <h3 data-test="spot-preview__calendar-summary">{{ spotData.details[language.value.trcid].calendarsummary }}</h3>
     <hr />
     <div class="spot-preview-container__adress">
-      <span>{{ spotData.location.adress }}</span>
-      <span class="last-item"
+      <span data-test="spot-preview__address">{{ spotData.location.adress }}</span>
+      <span data-test="spot-preview__city-zipcode" class="last-item"
         >{{ spotData.location.city }} {{ spotData.location.zipcode }}</span
       >
     </div>
     <hr />
     <p>{{ spotData.details[language.value.trcid].shortdescription }}</p>
-    <button class="see-more custom-button" @click="handleClick(spotData.trcid)">
+    <button data-test="spot-preview__see-more" class="see-more custom-button" @click="handleClick(spotData.trcid)">
       {{ language.value.seeMore }}
     </button>
   </div>
